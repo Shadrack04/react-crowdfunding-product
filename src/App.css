@@ -1,14 +1,13 @@
 @import "tailwindcss";
 
-header {
+.hero {
   background-image: url(/public/images/image-hero-desktop.jpg);
   background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-size: auto;
 }
 
 @media (max-width: 480px) {
-  header {
+  .hero {
     background-image: url(/public/images/image-hero-mobile.jpg);
   }
 }

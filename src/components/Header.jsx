@@ -1,5 +1,11 @@
-import React from "react";
+import Nav from "./Nav";
 
 export default function Header() {
-  return <header className=" w-full h-60 lg:h-72">header</header>;
+  return (
+    <div className="hero w-full h-52 md:h-60">
+      <header className=" py-2 px-4 md:px-10">
+        <Nav />
+      </header>
+    </div>
+  );
 }
