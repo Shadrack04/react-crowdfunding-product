@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Logo from "./Logo";
 import menuIcon from "../../public/images/icon-hamburger.svg";
-import closeIcon from "../../public/images/icon-close-modal.svg";
+import closeIcon from "../../public/images/icon-close-menu.svg";
 
 const links = [
   { name: "About", link: "/about" },
