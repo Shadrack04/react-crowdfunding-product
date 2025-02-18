@@ -3,6 +3,7 @@ import masterCraft from "/images/logo-mastercraft.svg";
 import bookmark from "/images/icon-bookmark.svg";
 import Card from "./Card";
 import Progress from "./Progress";
+import About from "./About";
 
 function Main() {
   return (
@@ -41,6 +42,7 @@ function Main() {
       <Card>
         <Progress />
       </Card>
+      <About />
     </main>
   );
 }
