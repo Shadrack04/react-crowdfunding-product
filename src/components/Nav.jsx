@@ -12,7 +12,7 @@ const links = [
 function Nav() {
   const [openNav, setOpenNav] = useState(false);
   return (
-    <nav className=" flex items-center justify-between">
+    <nav className=" sticky top-0 flex items-center justify-between">
       <Logo />
       <ul
         className={`${

@@ -1,11 +1,13 @@
 import Button from "./Button";
 import masterCraft from "/images/logo-mastercraft.svg";
 import bookmark from "/images/icon-bookmark.svg";
+import Card from "./Card";
+import Progress from "./Progress";
 
 function Main() {
   return (
-    <main className=" w-full">
-      <div className=" flex flex-col bg-white w-[90%] md:w-[60%]  relative -mt-10 mx-auto shadow-lg rounded-xl">
+    <main className=" relative w-full">
+      <div className=" flex flex-col bg-white w-[90%] md:w-[60%] relative -mt-10 mx-auto shadow-lg rounded-xl">
         <div className=" w-full absolute -top-8 flex items-center">
           <img
             src={masterCraft}
@@ -32,7 +34,13 @@ function Main() {
           </div>
         </div>
       </div>
-      <div className=" bg-white mt-4 h-56 w-[90%] mx-auto shadow-xl"></div>
+      {/* fake background color for the main section */}
+      <div className="absolute top-0 left-0 w-full h-full bg-gray-100 -z-10"></div>
+
+      {/* <div className=" bg-white mt-4 h-56 w-[90%] mx-auto shadow-xl"></div> */}
+      <Card>
+        <Progress />
+      </Card>
     </main>
   );
 }

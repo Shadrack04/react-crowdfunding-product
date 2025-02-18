@@ -11,3 +11,16 @@
     background-image: url(/public/images/image-hero-mobile.jpg);
   }
 }
+
+.main {
+  position: relative;
+}
+
+.main:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: red;
+}
