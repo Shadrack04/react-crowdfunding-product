@@ -1,3 +1,5 @@
+import { FaRegBookmark } from "react-icons/fa6";
+import { FaBookmark } from "react-icons/fa6";
 import Button from "./Button";
 import masterCraft from "/images/logo-mastercraft.svg";
 import bookmark from "/images/icon-bookmark.svg";
@@ -27,7 +29,10 @@ function Main() {
           <div className="my-8 flex items-center justify-center gap-3 md:gap-40">
             <Button>Back this project</Button>
             <div className=" flex items-center cursor-pointer">
-              <img className=" z-20" src={bookmark} alt="Bookmark" />
+              {/* <img className=" z-20" src={bookmark} alt="Bookmark" /> */}
+              <div className=" z-20 p-4 bg-black rounded-full">
+                <FaBookmark className=" text-gray-400 z-20 h-6 w-6" />
+              </div>
               <span className="hidden md:flex text-lg font-semibold text-stone-600 py-3.5 -ml-12 pl-14 pr-6 z-10 rounded-full bg-gray-300">
                 Bookmark
               </span>

@@ -1,4 +1,4 @@
-import React from "react";
+import PropTypes from "prop-types";
 import Button from "./Button";
 
 const plansArray = [
@@ -37,6 +37,13 @@ function Plans() {
     </div>
   );
 }
+
+Plan.propTypes = {
+  plan: PropTypes.string,
+  amount: PropTypes.number,
+  text: PropTypes.string,
+  quantity: PropTypes.number,
+};
 
 function Plan({ plan, amount, text, quantity }) {
   return (
