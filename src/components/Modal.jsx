@@ -1,7 +1,13 @@
 import PropTypes from "prop-types";
+import { useEffect } from "react";
 
 function Modal({ children }) {
-  document.body.style.overflowY = "hidden";
+  useEffect(() => {
+    document.body.style.overflowY = "hidden";
+    return () => {
+      document.body.style.overflowY = "auto";
+    };
+  }, []);
   return (
     <div className=" fixed inset-0 flex pt-10 pb-1 z-50 bg-black/50">
       <div className=" absolute right-5 top-15"></div>

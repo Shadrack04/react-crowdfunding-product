@@ -12,12 +12,13 @@ const links = [
 function Nav() {
   const [openNav, setOpenNav] = useState(false);
   return (
-    <nav className=" sticky top-0 flex items-center justify-between">
+    <nav className=" sticky top-0 flex items-center justify-between z-50">
       <Logo />
+      {openNav && <div className=" md:hidden  fixed inset-0 bg-black/50"></div>}
       <ul
         className={`${
           openNav ? "left-4 right-4" : "-left-100"
-        } flex flex-col absolute top-10  transition-all duration-300  md:static md:flex-row bg-white md:bg-transparent px-4 md:p-0 rounded-md`}
+        } flex flex-col absolute top-10  transition-all duration-300  md:static md:flex-row bg-white md:bg-transparent px-4 md:p-0 rounded-md z-50`}
       >
         {links.map((link, index) => (
           <li
@@ -29,7 +30,7 @@ function Nav() {
         ))}
       </ul>
 
-      <div className="md:hidden" onClick={() => setOpenNav((N) => !N)}>
+      <div className="md:hidden z-50" onClick={() => setOpenNav((N) => !N)}>
         <img src={openNav ? closeIcon : menuIcon} alt="Hamburger menu icon" />
       </div>
     </nav>

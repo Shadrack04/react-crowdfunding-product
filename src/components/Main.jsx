@@ -6,8 +6,10 @@ import bookmark from "/images/icon-bookmark.svg";
 import Card from "./Card";
 import Progress from "./Progress";
 import About from "./About";
+import { useAppContext } from "../context/GlobalContext";
 
 function Main() {
+  const { setOpenModal, bookmark, handleBookmarkClick } = useAppContext();
   return (
     <main className=" relative w-full">
       <div className=" flex flex-col bg-white w-[90%] md:w-[60%] relative -mt-10 mx-auto shadow-lg rounded-xl">
@@ -26,15 +28,31 @@ function Main() {
             A beautifully handcrafted monitor stand to reduce neck and eye
             strain.
           </p>
-          <div className="my-8 flex items-center justify-center gap-3 md:gap-40">
-            <Button>Back this project</Button>
+          <div
+            onClick={handleBookmarkClick}
+            className="my-8 flex items-center justify-center gap-3 md:gap-40"
+          >
+            <Button onClick={() => setOpenModal(true)}>
+              Back this project
+            </Button>
             <div className=" flex items-center cursor-pointer">
-              {/* <img className=" z-20" src={bookmark} alt="Bookmark" /> */}
-              <div className=" z-20 p-4 bg-black rounded-full">
-                <FaBookmark className=" text-gray-400 z-20 h-6 w-6" />
+              <div
+                className={`${
+                  bookmark ? "bg-[hsl(176_50%_47%)]" : " bg-black"
+                } z-20 p-4 rounded-full`}
+              >
+                <FaBookmark
+                  className={`${
+                    bookmark ? "text-white" : " text-gray-400"
+                  } z-20 h-6 w-6`}
+                />
               </div>
-              <span className="hidden md:flex text-lg font-semibold text-stone-600 py-3.5 -ml-12 pl-14 pr-6 z-10 rounded-full bg-gray-300">
-                Bookmark
+              <span
+                className={`${
+                  bookmark ? "text-[hsl(176_50%_47%)]" : "text-stone-600"
+                } hidden md:flex text-lg font-semibold py-3.5 -ml-12 pl-14 pr-6 z-10 rounded-full bg-gray-200`}
+              >
+                {bookmark ? "Bookmarked" : "Bookmark"}
               </span>
             </div>
           </div>

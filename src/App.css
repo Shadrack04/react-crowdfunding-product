@@ -24,3 +24,7 @@
   width: 100%;
   background-color: red;
 }
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}

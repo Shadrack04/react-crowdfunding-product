@@ -48,8 +48,18 @@ Plan.propTypes = {
 function Plan({ plan, amount, text, quantity }) {
   return (
     <>
-      <div className=" border-2 border-gray-300 rounded-lg p-4">
-        <h2 className="text-2xl font-bold">{plan}</h2>
+      <div
+        className={`${
+          quantity === 0 ? " grayscale-100" : ""
+        } border-2 border-gray-300 rounded-lg p-4`}
+      >
+        <h2
+          className={`${
+            quantity === 0 ? " text-gray-600" : ""
+          } text-2xl font-bold`}
+        >
+          {plan}
+        </h2>
         <p className=" text-xl mb-3 text-[hsl(176_50%_47%)] font-bold">
           Pledge ${amount} or more
         </p>
