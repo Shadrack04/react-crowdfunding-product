@@ -7,9 +7,11 @@ import Card from "./Card";
 import Progress from "./Progress";
 import About from "./About";
 import { useAppContext } from "../context/GlobalContext";
+import { usePlan } from "../context/plan-context";
 
 function Main() {
   const { setOpenModal, bookmark, handleBookmarkClick } = useAppContext();
+
   return (
     <main className=" relative w-full">
       <div className=" flex flex-col bg-white w-[90%] md:w-[60%] relative -mt-10 mx-auto shadow-lg rounded-xl">

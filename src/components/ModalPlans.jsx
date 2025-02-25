@@ -1,4 +1,6 @@
+import { useState } from "react";
 import { useAppContext } from "../context/GlobalContext";
+import { usePlan } from "../context/plan-context";
 import Button from "./Button";
 import InputComp from "./InputComp";
 import { IoCloseSharp } from "react-icons/io5";
@@ -64,7 +66,25 @@ function ModalPlans() {
 }
 
 function Plan({ plan, index }) {
-  const { selectedPlan, handleSelectPlan } = useAppContext();
+  const { selectedPlan, handleSelectPlan, setOpenModal } = useAppContext();
+  const { dispatch, error, setError } = usePlan();
+  const [inputAmount, setInputAmount] = useState(0);
+
+  function handleInput(e, minimumAmount) {
+    console.log(minimumAmount);
+    setInputAmount(e.target.value);
+    if (e.target.value < minimumAmount) {
+      setError(`Amount can not be less than ${minimumAmount}`);
+    } else {
+      setError("");
+    }
+  }
+
+  function handleSubmit() {
+    dispatch({ type: "submit", error: error, payload: Number(inputAmount) });
+    setOpenModal(false);
+  }
+
   return (
     <div
       onClick={() => handleSelectPlan(index)}
@@ -135,8 +155,12 @@ function Plan({ plan, index }) {
               Enter your pledge
             </p>
             <div className=" flex items-center justify-between md:gap-4">
-              <InputComp />
-              <Button>Continue</Button>
+              <InputComp
+                minimumAmount={plan.amount}
+                inputAmount={inputAmount}
+                handleInput={handleInput}
+              />
+              <Button onClick={handleSubmit}>Continue</Button>
             </div>
           </div>
         </div>
