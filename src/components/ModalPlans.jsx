@@ -32,7 +32,11 @@ const plansArray = [
 ];
 
 function ModalPlans({ setOpenModal }) {
-  // const { setOpenModal } = useAppContext();
+  const [selectedPlan, setSelectedPlan] = useState(null);
+
+  document.querySelectorAll("input[type=number]").forEach((input) => {
+    input.addEventListener("wheel", (event) => event.preventDefault());
+  });
 
   return (
     <div>
@@ -50,11 +54,12 @@ function ModalPlans({ setOpenModal }) {
         </p>
         {plansArray.map((plan, index) => (
           <Plan
-            onClick={() => console.log("clicked")}
             key={index}
             plan={plan}
             index={index}
             setOpenModal={setOpenModal}
+            selectedPlan={selectedPlan}
+            setSelectedPlan={setSelectedPlan}
           />
         ))}
       </div>
@@ -62,8 +67,7 @@ function ModalPlans({ setOpenModal }) {
   );
 }
 
-function Plan({ plan, index, setOpenModal }) {
-  const [selectedPlan, setSelectedPlan] = useState(null);
+function Plan({ plan, index, setOpenModal, selectedPlan, setSelectedPlan }) {
   const { state, dispatch, error, setError } = usePlan();
 
   const [inputAmount, setInputAmount] = useState("");
@@ -73,10 +77,12 @@ function Plan({ plan, index, setOpenModal }) {
 
   function handleSelectPlan(index) {
     setSelectedPlan(index);
+    setError("");
   }
 
   function handleInput(e, minimumAmount) {
     const { value, name } = e.target;
+    if (!value) return;
     setInputAmount(value);
     setStand(name);
     if (e.target.value < minimumAmount) {
@@ -87,13 +93,15 @@ function Plan({ plan, index, setOpenModal }) {
   }
 
   function handleSubmit() {
-    dispatch({
-      type: "submit",
-      error: error,
-      payload: Number(inputAmount),
-      stand: stand,
-    });
-    setOpenModal(false);
+    if (!error) {
+      dispatch({
+        type: "submit",
+        error: error,
+        payload: Number(inputAmount),
+        stand: stand,
+      });
+      setOpenModal(false);
+    }
   }
 
   return (
@@ -179,6 +187,7 @@ function Plan({ plan, index, setOpenModal }) {
               <Button onClick={handleSubmit}>Continue</Button>
             </div>
           </div>
+          {error && <p className=" text-red-700 text-end mr-8">{error}</p>}
         </div>
       </div>
     </div>

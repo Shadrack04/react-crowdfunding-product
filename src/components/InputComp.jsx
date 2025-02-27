@@ -9,7 +9,8 @@ function InputComp({ minimumAmount, inputAmount, handleInput, name }) {
         value={inputAmount}
         onChange={(e) => handleInput(e, minimumAmount || 0)}
         name={name}
-        type="text"
+        type="number"
+        inputMode="numeric"
         className=" text-xl  border-2 border-gray-300 inline-block w-28 py-4 pl-10 rounded-full focus:outline-none focus:ring-2 focus:ring-[hsl(176_50%_47%)]"
       />
     </div>
