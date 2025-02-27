@@ -1,16 +1,23 @@
-import { FaRegBookmark } from "react-icons/fa6";
 import { FaBookmark } from "react-icons/fa6";
 import Button from "./Button";
 import masterCraft from "/images/logo-mastercraft.svg";
-import bookmark from "/images/icon-bookmark.svg";
 import Card from "./Card";
 import Progress from "./Progress";
 import About from "./About";
-import { useAppContext } from "../context/GlobalContext";
-import { usePlan } from "../context/plan-context";
+
+import { useCallback, useState } from "react";
+import Modal from "./Modal";
+import ModalPlans from "./ModalPlans";
 
 function Main() {
-  const { setOpenModal, bookmark, handleBookmarkClick } = useAppContext();
+  const [openModal, setOpenModal] = useState(false);
+  const [bookmark, setBookmark] = useState(false);
+
+  const handleBookmarkClick = useCallback(() => {
+    setBookmark(!bookmark);
+  }, [bookmark]);
+  // function handleBookmarkClick() {
+  // }
 
   return (
     <main className=" relative w-full">
@@ -30,14 +37,14 @@ function Main() {
             A beautifully handcrafted monitor stand to reduce neck and eye
             strain.
           </p>
-          <div
-            onClick={handleBookmarkClick}
-            className="my-8 flex items-center justify-center gap-3 md:gap-40"
-          >
+          <div className="my-8 flex items-center justify-center gap-3 md:gap-40">
             <Button onClick={() => setOpenModal(true)}>
               Back this project
             </Button>
-            <div className=" flex items-center cursor-pointer">
+            <div
+              onClick={handleBookmarkClick}
+              className=" flex items-center cursor-pointer"
+            >
               <div
                 className={`${
                   bookmark ? "bg-[hsl(176_50%_47%)]" : " bg-black"
@@ -62,12 +69,17 @@ function Main() {
       </div>
       {/* fake background color for the main section */}
       <div className="absolute top-0 left-0 w-full h-full bg-gray-100 -z-10"></div>
-
-      {/* <div className=" bg-white mt-4 h-56 w-[90%] mx-auto shadow-xl"></div> */}
       <Card>
         <Progress />
       </Card>
       <About />
+      {openModal ? (
+        <Modal openModal={openModal}>
+          <ModalPlans setOpenModal={setOpenModal} />
+        </Modal>
+      ) : (
+        ""
+      )}
     </main>
   );
 }

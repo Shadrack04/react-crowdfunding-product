@@ -1,20 +1,24 @@
 import PropTypes from "prop-types";
 import Button from "./Button";
+import { usePlan } from "../context/plan-context";
 
 const plansArray = [
   {
+    id: "bambooStand",
     plan: "Bamboo stand",
     amount: 25,
     text: "You get an ergonomic stand made of natural bamboo. You've helped us launch our promotional campaign, and you’ll be added to a special Backer member list.",
     quantity: 101,
   },
   {
+    id: "blackStand",
     plan: "Black Edition Stand",
     amount: 75,
     text: "You get a Black Special Edition computer stand and a personal thank you. You’ll be added to our Backer member list. Shipping is included.",
     quantity: 64,
   },
   {
+    id: "mahoganyStand",
     plan: "Mahogany Special Edition",
     amount: 200,
     text: "You get two Special Edition Mahogany stands, a Backer T-Shirt, and a personal thank you. You’ll be added to our Backer member list. Shipping is included.",
@@ -23,6 +27,9 @@ const plansArray = [
 ];
 
 function Plans() {
+  const { state } = usePlan();
+  const { planQuantities } = state;
+
   return (
     <div className=" flex flex-col gap-4">
       {plansArray.map((plan) => (
@@ -31,7 +38,7 @@ function Plans() {
           plan={plan.plan}
           amount={plan.amount}
           text={plan.text}
-          quantity={plan.quantity}
+          quantity={planQuantities[plan.id]}
         />
       ))}
     </div>

@@ -1,4 +1,4 @@
-import React from "react";
+import { memo } from "react";
 import Card from "./Card";
 import Plans from "./Plans";
 
@@ -22,6 +22,7 @@ function About() {
               USB sticks to be stored under the stand.
             </p>
           </article>
+
           <Plans />
         </div>
       </Card>
@@ -29,4 +30,4 @@ function About() {
   );
 }
 
-export default About;
+export default memo(About);

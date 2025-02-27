@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+nav {
+  font-family: "Poppins", serif;
+}
+
 .hero {
   background-image: url(/public/images/image-hero-desktop.jpg);
   background-position: center;

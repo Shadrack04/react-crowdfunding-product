@@ -1,4 +1,4 @@
-import React from "react";
+import { memo } from "react";
 import ProgressBar from "./ProgressBar";
 import { usePlan } from "../context/plan-context";
 
@@ -30,4 +30,4 @@ function Progress() {
   );
 }
 
-export default Progress;
+export default memo(Progress);
