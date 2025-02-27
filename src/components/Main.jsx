@@ -74,7 +74,7 @@ function Main() {
       </Card>
       <About />
       {openModal ? (
-        <Modal openModal={openModal}>
+        <Modal openModal={openModal} setOpenModal={setOpenModal}>
           <ModalPlans setOpenModal={setOpenModal} />
         </Modal>
       ) : (

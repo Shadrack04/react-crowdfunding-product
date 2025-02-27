@@ -39,7 +39,7 @@ function ModalPlans({ setOpenModal }) {
   });
 
   return (
-    <div>
+    <div className=" pb-4">
       <div className=" flex items-center justify-between">
         <h1 className=" text-2xl font-bold my-2">Back this project</h1>
         <IoCloseSharp
